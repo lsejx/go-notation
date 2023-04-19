@@ -50,6 +50,8 @@ func parseI64(s string) (int64, error) {
 	switch s {
 	case Max:
 		return math.MaxInt64, nil
+	case Min:
+		return math.MinInt64, nil
 	}
 
 	var si int64 = 1
