@@ -9,10 +9,12 @@ import (
 )
 
 const (
-	helpOptionUnix = "-h"
-	helpOptionGnu  = "--help"
-	i64ModeId      = "i"
-	u64ModeId      = "u"
+	helpOptionUnix    = "-h"
+	helpOptionGnu     = "--help"
+	i64ModeOptionUnix = "-i"
+	i64ModeOptionGnu  = "--int"
+	u64ModeOptionUnix = "-u"
+	u64ModeOptionGnu  = "--uint"
 )
 
 func getCmdName() string {
@@ -25,19 +27,18 @@ var helpSuggestionMessage = func() string {
 }()
 
 var helpMessage = func() string {
-	const body = `[type | option] [operand | operator] ...
+	const body = `[option] [operand | operator] ...
 
-type
-    ` + i64ModeId + `    64bit signed int
-    ` + u64ModeId + `    64bit unsigned int
-    if no type selected, 64bit float
+the default is 64bit float mode
 
 option
     ` + helpOptionUnix + `, ` + helpOptionGnu + `    print info
+    ` + i64ModeOptionUnix + `, ` + i64ModeOptionGnu + `     64bit signed int mode
+    ` + u64ModeOptionUnix + `, ` + u64ModeOptionGnu + `    64bit unsigned int mode
 
 valid identifier
     64bit float mode           ` + cmd.Add + `  ` + cmd.Sub + `  ` + cmd.Mul + `  ` + cmd.Div + `  ` + cmd.Pow + `  ` + cmd.Mod + `  ` + cmd.Pi + `  
-    64bit signed int mode      ` + cmd.Add + `  ` + cmd.Sub + `  ` + cmd.Mul + `  ` + cmd.Div + `  ` + cmd.Pow + `(rhs must be positive)  ` + cmd.Mod + `  ` + cmd.Max + `
+    64bit signed int mode      ` + cmd.Add + `  ` + cmd.Sub + `  ` + cmd.Mul + `  ` + cmd.Div + `  ` + cmd.Pow + `(rhs must be positive)  ` + cmd.Mod + `  ` + cmd.Max + `  ` + cmd.Min + `
     64bit unsigned int mode    ` + cmd.Add + `  ` + cmd.Sub + `  ` + cmd.Mul + `  ` + cmd.Div + `  ` + cmd.Pow + `  ` + cmd.Mod + `  ` + cmd.Max + `
 
 SI

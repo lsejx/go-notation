@@ -34,9 +34,9 @@ func main() {
 	case helpOptionUnix, helpOptionGnu:
 		fmt.Println(helpMessage)
 		os.Exit(0)
-	case i64ModeId:
+	case i64ModeOptionUnix, i64ModeOptionGnu:
 		result, err = cmd.I64Runner.Run(args[1:])
-	case u64ModeId:
+	case u64ModeOptionUnix, u64ModeOptionGnu:
 		result, err = cmd.U64Runner.Run(args[1:])
 	default:
 		result, err = cmd.F64Runner.Run(args)
