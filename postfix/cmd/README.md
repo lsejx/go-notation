@@ -11,6 +11,8 @@
 	pfnc pi 2 x        // 2π=6.28...
 	pfnc 2 8 xx        // pow(2,8)=256
 	pfnc 2 1 2 / xx    // sqrt(2)=1.41...
+	pfnc 1.234 1k x    // 1234
+	pfnc 1k 1m x       // 1
 
 ### 64bit signed int mode
 	pfnc -i 1 1 +
