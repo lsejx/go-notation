@@ -21,6 +21,7 @@ const (
 const (
 	Pi  = "pi"
 	Max = "max"
+	Min = "min"
 )
 
 // SI prefix
