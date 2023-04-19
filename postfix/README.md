@@ -1,5 +1,6 @@
 # go-notation/postfix
 * Postfix-notation calculator library
+* Postfix-notation calculator command (details is in ./cmd)
 <br><br>
 
 # Import
