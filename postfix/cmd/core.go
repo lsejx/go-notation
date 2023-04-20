@@ -60,14 +60,15 @@ type Runner[T any] struct {
 
 func newRunner[T any](operations map[string]func(T, T) (T, error), parse func(string) (T, error), format func(T) (string, error)) Runner[T] {
 	return Runner[T]{
-		calculator: postfix.NewCalculator[T](2),
+		calculator: nil,
 		operations: operations,
 		parse:      parse,
 		format:     format,
 	}
 }
 
-func (runner Runner[T]) Run(formula []string) (string, error) {
+func (runner *Runner[T]) Run(formula []string) (string, error) {
+	runner.calculator = postfix.NewCalculator[T](len(formula))
 	for _, elm := range formula {
 		operation, isPresent := runner.operations[elm]
 		if isPresent {
