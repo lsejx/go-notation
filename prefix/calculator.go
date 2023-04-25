@@ -52,7 +52,11 @@ func (c *Calculator[T]) AppendValue(value T) error {
 
 // AppendValue sets the operation to latest operation as an operand.
 // If no operation is inputted before, the operation's result stands as result of the calculation.
+// This panics if f == nil.
 func (c *Calculator[T]) AppendOperation(f func(lhs, rhs T) (T, error)) error {
+	if f == nil {
+		panic("github.com/lsejx/go-notation/prefix: f == nil")
+	}
 	o := newOperation(f)
 	if c.root == nil {
 		c.root = o
