@@ -61,7 +61,11 @@ func (p *Calculator[T]) popTwo() (operandsOfAOperation[T], error) {
 
 // Operate pops two values from internal stack and pass them into operation.
 // Non-nil error when stack has less than two values or operation returned non-nil error.
+// This panics if operation == nil.
 func (p *Calculator[T]) Operate(operation func(T, T) (T, error)) (T, error) {
+	if operation == nil {
+		panic("github.com/lsejx/go-notation/postfix: operation == nil")
+	}
 	operands, err := p.popTwo()
 	if err != nil {
 		return getDefaultVal[T](), err
