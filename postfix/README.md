@@ -7,20 +7,20 @@
 	import "github.com/lsejx/go-notation/postfix"
 <br><br>
 
-# Example
+# Example (omit error handling)
 	// 1 2 + 3 -
-	pfnc := postfix.NewCalculator[int](2)
-	pfnc.AppendValue(1)
-	pfnc.AppendValue(2)
-	operationResult, err := pfnc.Operate(func(i1, i2 int) (int, error) { return i1 + i2, nil })
-	// handle err
+	pofc := postfix.NewCalculator[int](2)
+
+	pofc.AppendValue(1)
+	pofc.AppendValue(2)
+
+	operationResult, err := pofc.Operate(func(i1, i2 int) (int, error) { return i1 + i2, nil })
 	// operationResult == 3
 
-	pfnc.AppendValue(3)
-	operationResult, err = pfnc.Operate(func(i1, i2 int) (int, error) { return i1 - i2, nil })
-	// handle err
+	pofc.AppendValue(3)
+
+	operationResult, err = pofc.Operate(func(i1, i2 int) (int, error) { return i1 - i2, nil })
 	// operationResult == 0
 
-	result, err := pfnc.Result()
-	// handle err
+	result, err := pofc.Result()
 	// result == 0
