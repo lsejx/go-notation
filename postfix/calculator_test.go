@@ -62,7 +62,7 @@ func TestAppendOperand(t *testing.T) {
 	for _, data := range datas {
 		c := NewCalculator[byte](len(data.ins))
 		for _, in := range data.ins {
-			c.AppendOperand(in)
+			c.AppendValue(in)
 		}
 		if !bytes.Equal(data.after, c.operandStack) {
 			t.Fatalf("after:%v, actual:%v", data.after, c.operandStack)

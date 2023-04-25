@@ -83,7 +83,7 @@ func (runner *Runner[T]) Run(formula []string) (string, error) {
 		if err != nil {
 			return "", err
 		}
-		runner.calculator.AppendOperand(n)
+		runner.calculator.AppendValue(n)
 	}
 
 	result, err := runner.calculator.Result()

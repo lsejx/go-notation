@@ -35,9 +35,9 @@ func NewCalculator[T any](capacity int) *Calculator[T] {
 	return &Calculator[T]{make([]T, 0, capacity)}
 }
 
-// AppendOperand appends a value to internal stack by calling builtin append function.
-func (p *Calculator[T]) AppendOperand(v T) {
-	p.operandStack = append(p.operandStack, v)
+// AppendValue appends a value to internal stack by calling builtin append function.
+func (p *Calculator[T]) AppendValue(value T) {
+	p.operandStack = append(p.operandStack, value)
 }
 
 type operandsOfAOperation[T any] struct {
