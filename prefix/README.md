@@ -8,7 +8,7 @@ Prefix-notation calculator library
 
 # Example (omit error handling)
 	// - + 1 2 3
-	prfc := NewCalculator[int]()
+	prfc := prefix.NewCalculator[int]()
 
 	err := prfc.AppendOperation(func(lhs, rhs int) (int, error) { return lhs - rhs, nil })
 	err = prfc.AppendOperation(func(lhs, rhs int) (int, error) { return lhs + rhs, nil })
