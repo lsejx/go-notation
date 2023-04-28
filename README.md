@@ -1,5 +1,4 @@
 # go-notation
-* prefix notation
-* infix notation (TODO)
-* postfix notation
+* prefix notation calculation
+* postfix notation calculation
 * conversion library (TODO)
