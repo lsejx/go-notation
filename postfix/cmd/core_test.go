@@ -48,8 +48,8 @@ func TestRunner(t *testing.T) {
 	}{
 		{[]string{"a", "a", "success"}, "abc", nil},
 		{[]string{"a", "a", "error"}, "", errTest},
-		{[]string{"a", "success"}, "", postfix.ErrTooFewOperands},
-		{[]string{"a", "a"}, "", postfix.ErrTooFewOperators},
+		{[]string{"a", "success"}, "", postfix.ErrTooFewOperand},
+		{[]string{"a", "a"}, "", postfix.ErrTooFewOperator},
 	}
 
 	for _, data := range datas {

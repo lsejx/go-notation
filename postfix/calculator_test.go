@@ -94,8 +94,8 @@ func TestPopTwo(t *testing.T) {
 		stack   []byte
 		wantErr error
 	}{
-		{[]byte{}, ErrTooFewOperands},
-		{[]byte{1}, ErrTooFewOperands},
+		{[]byte{}, ErrTooFewOperand},
+		{[]byte{1}, ErrTooFewOperand},
 	}
 
 	for _, data := range invalidDatas {
@@ -141,7 +141,7 @@ func TestOperate(t *testing.T) {
 		operation func(byte, byte) (byte, error)
 		wantErr   error
 	}{
-		{[]byte{1}, func(byte, byte) (byte, error) { return 0, nil }, ErrTooFewOperands},
+		{[]byte{1}, func(byte, byte) (byte, error) { return 0, nil }, ErrTooFewOperand},
 		{[]byte{1, 2}, func(b1, b2 byte) (byte, error) { return 0, testErr }, testErr},
 	}
 
@@ -182,7 +182,7 @@ func TestResult(t *testing.T) {
 		wantErr error
 	}{
 		{[]byte{}, ErrNoFormula},
-		{[]byte{1, 2}, ErrTooFewOperators},
+		{[]byte{1, 2}, ErrTooFewOperator},
 	}
 
 	for _, data := range invalidDatas {

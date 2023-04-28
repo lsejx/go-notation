@@ -5,9 +5,9 @@ import (
 )
 
 var (
-	ErrTooFewOperands  error = errors.New("too few operands")
-	ErrTooFewOperators error = errors.New("too few operators")
-	ErrNoFormula       error = errors.New("no formula")
+	ErrTooFewOperand  error = errors.New("operand is not enough")
+	ErrTooFewOperator error = errors.New("operator is not enough")
+	ErrNoFormula      error = errors.New("no formula")
 )
 
 func getDefaultVal[T any]() T {
@@ -48,12 +48,12 @@ type operandsOfAOperation[T any] struct {
 func (p *Calculator[T]) popTwo() (operandsOfAOperation[T], error) {
 	right, err := pop(&p.operandStack)
 	if err != nil {
-		return operandsOfAOperation[T]{}, ErrTooFewOperands
+		return operandsOfAOperation[T]{}, ErrTooFewOperand
 	}
 
 	left, err := pop(&p.operandStack)
 	if err != nil {
-		return operandsOfAOperation[T]{}, ErrTooFewOperands
+		return operandsOfAOperation[T]{}, ErrTooFewOperand
 	}
 
 	return operandsOfAOperation[T]{left, right}, nil
@@ -90,7 +90,7 @@ func (p *Calculator[T]) Result() (T, error) {
 		return getDefaultVal[T](), ErrNoFormula
 	}
 	if len(p.operandStack) > 1 {
-		return getDefaultVal[T](), ErrTooFewOperators
+		return getDefaultVal[T](), ErrTooFewOperator
 	}
 	return p.operandStack[0], nil
 }
